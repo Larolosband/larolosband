@@ -7,92 +7,165 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-
 body{
-  background:#050b12;
-  color:white;
+background:#050b12;
+color:white;
+}
+
+:root{
+--salsa-red:#e63946;
+--gold:#ffd166;
+--turq:#00f5d4;
 }
 
 .hero{
-  height:100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-    url("https://i.imgur.com/A0HGX0u.png") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:40px;
+position:relative;
+height:95vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+.hero img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg, rgba(0,0,0,.8), rgba(0,0,0,.4));
+z-index:-1;
 }
 
 .hero h1{
-  font-size:4rem;
-  color:#ffd36a;
-  text-shadow:0 0 30px #ffb700;
+font-size:3.5rem;
+color:var(--gold);
+text-shadow:0 0 30px var(--salsa-red);
 }
-
 .hero h2{
-  font-size:2rem;
-  color:#00ffd5;
-  margin-top:15px;
-  letter-spacing:2px;
+font-size:1.8rem;
+color:var(--turq);
+margin-top:10px;
+}
+.hero p{
+max-width:700px;
+margin:30px auto;
+font-size:1.2rem;
+line-height:1.6;
 }
 
 .btn{
-  display:inline-block;
-  margin-top:40px;
-  padding:18px 45px;
-  background:linear-gradient(45deg,#ffb000,#ff0055);
-  border-radius:40px;
-  color:black;
-  font-weight:bold;
-  text-decoration:none;
-  box-shadow:0 0 30px rgba(255,80,0,.8);
-  transition:.3s;
-}
-
-.btn:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 50px rgba(255,100,0,1);
+display:inline-block;
+padding:18px 40px;
+background:linear-gradient(45deg,var(--salsa-red),var(--gold));
+color:black;
+border-radius:40px;
+text-decoration:none;
+font-weight:bold;
+margin-top:30px;
+box-shadow:0 0 25px var(--gold);
 }
 
 section{
-  padding:80px 10%;
-  background:#050b12;
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
 }
 
-h3{
-  color:#ffd36a;
-  font-size:2.5rem;
-  margin-bottom:30px;
-  text-align:center;
+.section-title{
+text-align:center;
+font-size:2.5rem;
+color:var(--gold);
+margin-bottom:50px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+.benefits{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+text-align:center;
+}
+
+.benefit{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,.6);
+}
+
+.clases-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
 }
 
 .card{
-  background:rgba(0,0,0,.6);
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 30px rgba(0,255,200,.2);
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:20px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+border:2px solid transparent;
+}
+.card:hover{
+transform:scale(1.05);
+border-color:var(--turq);
+box-shadow:0 0 20px var(--turq);
+}
+.card img{
+width:100px;
+margin-bottom:15px;
 }
 
-.card h4{
-  color:#00ffd5;
-  margin-bottom:15px;
-  font-size:1.5rem;
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+.modal iframe{
+width:90%;
+max-width:800px;
+height:450px;
+border-radius:20px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:30px;
+cursor:pointer;
+color:var(--gold);
 }
 
 footer{
-  background:black;
-  text-align:center;
-  padding:40px;
-  color:#aaa;
+text-align:center;
+padding:40px;
+background:black;
+margin-top:80px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+padding:18px 22px;
+border-radius:50px;
+color:white;
+font-weight:bold;
+text-decoration:none;
+box-shadow:0 0 20px #25d366;
 }
 </style>
 </head>
@@ -100,34 +173,85 @@ footer{
 <body>
 
 <div class="hero">
-  <div>
-    <h1>La Escuela de la Salsa</h1>
-    <h2>ROLOS BAND</h2>
-    <a href="#clases" class="btn">Ver Clases</a>
-  </div>
+<img src="https://i.imgur.com/A0HGX0u.png">
+<div>
+<h2>La Escuela de la Salsa</h2>
+<h1>ROLOS BAND</h1>
+<p>
+¿Estrés, ansiedad o depresión?  
+La percusión y la música activan endorfinas, reducen el cortisol y reconectan con tu equilibrio interior.  
+Aquí no vienes a competir, vienes a sanar.
+</p>
+<a class="btn" href="https://wa.me/573132190878?text=Quiero%20mi%20clase%20gratis%20en%20Rolos%20Band">🎁 Clase de cortesía</a>
+</div>
 </div>
 
-<section id="clases">
-  <h3>Explora tus Clases</h3>
-  <div class="grid">
-    <div class="card">
-      <h4>Salsa</h4>
-      <p>Domina el ritmo que mueve al mundo.</p>
-    </div>
-    <div class="card">
-      <h4>Piano</h4>
-      <p>Armonía y sabor latino.</p>
-    </div>
-    <div class="card">
-      <h4>Percusión</h4>
-      <p>Congas, bongó y timbal profesional.</p>
-    </div>
-  </div>
+<section>
+<h2 class="section-title">¿Por qué la Salsa Sana?</h2>
+<div class="benefits">
+<div class="benefit">🥁 Reduce el estrés y la ansiedad</div>
+<div class="benefit">🧠 Mejora memoria y concentración</div>
+<div class="benefit">❤️ Libera emociones reprimidas</div>
+<div class="benefit">🎶 Conecta cuerpo y mente</div>
+</div>
 </section>
 
+<section id="clases">
+<h2 class="section-title">Explora tus Clases</h2>
+
+<div class="clases-grid">
+
+<div class="card" onclick="mostrar('https://www.tiktok.com/embed/7515589742797393158')">
+<img src="https://i.imgur.com/NHXm3y9.png">
+<h3>Conga</h3>
+</div>
+
+<div class="card" onclick="mostrar('https://www.tiktok.com/embed/7192222000545271045')">
+<img src="https://i.imgur.com/Vi7jQ43.png">
+<h3>Timbal</h3>
+</div>
+
+<div class="card" onclick="mostrar('https://www.tiktok.com/embed/7201627786195389701')">
+<img src="https://i.imgur.com/DnGDjho.png">
+<h3>Bongo</h3>
+</div>
+
+<div class="card" onclick="mostrar('https://www.youtube.com/embed/CR8ZbY6FQVM')">
+<img src="https://i.imgur.com/eFPNV4E.png">
+<h3>Canto</h3>
+</div>
+
+<div class="card" onclick="mostrar('https://www.youtube.com/embed/7ybvRwyTvYY')">
+<img src="https://i.imgur.com/iN3R95d.png">
+<h3>Piano</h3>
+</div>
+
+</div>
+</section>
+
+<div class="modal" id="modal">
+<span class="close" onclick="cerrar()">✖</span>
+<iframe id="video"></iframe>
+</div>
+
 <footer>
-  © Rolos Band – La Escuela de la Salsa
+<p>📍 Ciudad Verde, Soacha</p>
+<p>📲 313 219 0878</p>
+<p>“Un tambor que suena es un corazón que sana.”</p>
 </footer>
+
+<a class="whatsapp" href="https://wa.me/573132190878?text=Quiero%20mi%20clase%20gratis%20en%20Rolos%20Band">💬</a>
+
+<script>
+function mostrar(url){
+document.getElementById("modal").style.display="flex";
+document.getElementById("video").src=url;
+}
+function cerrar(){
+document.getElementById("modal").style.display="none";
+document.getElementById("video").src="";
+}
+</script>
 
 </body>
 </html>
