@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -9,89 +8,105 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-  background:radial-gradient(circle at top,#061a2e,#000814);
+  background:#000814;
   color:white;
 }
 
 /* HERO */
 .hero{
-  background:linear-gradient(180deg,#000814,#061a2e);
+  position:relative;
+  height:95vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.hero-overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,rgba(0,0,0,.75),rgba(255,0,0,.4));
+  z-index:-1;
+}
+
+.hero-content{
   text-align:center;
-  padding:60px 20px;
+  padding:20px;
 }
 
-.hero img{
-  width:160px;
-  margin-bottom:20px;
-  filter:drop-shadow(0 0 20px #00eaff);
-}
-
-.hero h1{
+.hero-content h1{
   font-size:3em;
-  color:#00eaff;
-  text-shadow:0 0 20px #00eaff;
+  color:#ffd700;
+  text-shadow:0 0 20px gold;
 }
 
-.hero p{
+.hero-content h2{
+  font-size:4em;
+  color:#00eaff;
+  text-shadow:0 0 30px #00eaff;
+}
+
+.hero-content p{
+  margin-top:15px;
   font-size:1.2em;
-  margin-top:10px;
-  color:#b0f7ff;
+}
+
+.hero-btn{
+  margin-top:30px;
+  display:inline-block;
+  padding:18px 40px;
+  background:linear-gradient(45deg,#ffd700,#ff2e2e);
+  color:black;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 0 30px gold;
 }
 
 /* MENSAJE */
 .mensaje{
   max-width:900px;
   margin:auto;
-  padding:60px 20px;
+  padding:70px 20px;
   text-align:center;
   line-height:1.6;
 }
 
 .mensaje h2{
   color:#00eaff;
-  font-size:2em;
+  font-size:2.2em;
   margin-bottom:20px;
-}
-
-.mensaje p{
-  font-size:1.1em;
-  margin-bottom:15px;
 }
 
 /* CTA */
 .cta{
-  background:rgba(0,255,255,0.08);
-  padding:40px 20px;
+  background:rgba(255,215,0,.12);
+  padding:50px 20px;
   text-align:center;
+  margin:40px auto;
   border-radius:20px;
   max-width:800px;
-  margin:40px auto;
-  box-shadow:0 0 30px rgba(0,255,255,0.3);
-}
-
-.cta h3{
-  color:#00eaff;
-  font-size:1.8em;
-  margin-bottom:15px;
+  box-shadow:0 0 30px gold;
 }
 
 .cta a{
   display:inline-block;
-  margin-top:20px;
-  padding:15px 35px;
+  margin-top:25px;
+  padding:15px 40px;
   background:#00eaff;
   color:#000814;
   font-weight:bold;
   border-radius:30px;
   text-decoration:none;
-  font-size:1.1em;
-  box-shadow:0 0 25px #00eaff;
-  transition:.3s;
-}
-
-.cta a:hover{
-  background:#0ff;
-  box-shadow:0 0 40px #0ff;
 }
 
 /* CLASES */
@@ -101,10 +116,9 @@ body{
 }
 
 .clases h2{
-  font-size:2.5em;
   color:#00eaff;
+  font-size:2.5em;
   margin-bottom:50px;
-  text-shadow:0 0 15px #00eaff;
 }
 
 .clases-grid{
@@ -116,17 +130,17 @@ body{
 }
 
 .clase{
-  background:rgba(0,255,255,0.08);
+  background:rgba(0,255,255,.1);
   border-radius:20px;
   padding:25px;
-  box-shadow:0 0 25px rgba(0,255,255,0.3);
-  transition:.4s;
-  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px #00eaff;
+  text-decoration:none;
+  color:white;
+  transition:.3s;
 }
 
 .clase:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 0 40px #00eaff;
+  transform:scale(1.05);
 }
 
 .clase img{
@@ -135,17 +149,11 @@ body{
   filter:drop-shadow(0 0 12px #00eaff);
 }
 
-.clase h3{
-  color:#00eaff;
-  margin-bottom:10px;
-}
-
 /* FOOTER */
 footer{
   text-align:center;
-  padding:40px 20px;
+  padding:40px;
   background:#000814;
-  color:#b0f7ff;
 }
 </style>
 </head>
@@ -154,79 +162,66 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <img src="https://i.imgur.com/8C0YkqZ.png" alt="Rolos Band Logo">
-  <h1>ROLOS BAND</h1>
-  <p>La Escuela de la Salsa</p>
+  <img class="hero-bg" src="https://i.imgur.com/A0HGX0u.png">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>La Escuela de la Salsa</h1>
+    <h2>ROLOS BAND</h2>
+    <p>Conecta con tu ritmo, sana con la música</p>
+    <a class="hero-btn" href="https://wa.me/573133231571">🎁 Clase de cortesía</a>
+  </div>
 </section>
 
 <!-- MENSAJE -->
 <section class="mensaje">
-  <h2>🥁 ¿Estrés, Depresión o Ansiedad?</h2>
-  <p><strong>Dilo con la Salsa y la Percusión.</strong></p>
-
-  <p>En <strong>La Escuela de la Salsa Rolos Band</strong>, ubicados en <strong>Ciudad Verde</strong>, no solo enseñamos a tocar; construimos bienestar.</p>
-
-  <p>Tocar percusión reduce el cortisol (estrés) y libera endorfinas.</p>
-
-  <p>✅ Niños: atención y disciplina<br>
-     ✅ Adultos: el mejor escape del día<br>
-     ✅ Abuelos: memoria y coordinación</p>
-
-  <p>No necesitas instrumento propio. Solo ganas de conectar con tu ritmo.</p>
-
-  <p><strong>📍 Ciudad Verde, Soacha</strong><br>
-     <strong>📲 Info y Clase de cortesía: 313 323 1571</strong></p>
-
-  <p><em>“Porque un tambor que suena es un corazón que sana.”</em></p>
+<h2>¿Estrés, depresión o ansiedad?</h2>
+<p><strong>Dilo con la salsa y la percusión.</strong></p>
+<p>En Rolos Band – La Escuela de la Salsa en Ciudad Verde, no solo enseñamos a tocar; construimos bienestar.</p>
+<p>La percusión reduce el estrés y libera endorfinas.</p>
+<p>Niños, adultos y abuelos encuentran aquí una terapia musical.</p>
+<p><strong>📍 Ciudad Verde, Soacha<br>📲 313 323 1571</strong></p>
+<p><em>“Porque un tambor que suena es un corazón que sana.”</em></p>
 </section>
 
 <!-- CTA -->
 <div class="cta">
-  <h3>🎁 Toma tu Clase de Cortesía</h3>
-  <p>Escríbenos ahora y vive tu primera experiencia salsera GRATIS.</p>
-  <a href="https://wa.me/573133231571" target="_blank">Hablar por WhatsApp</a>
+<h2>🎁 Tu primera clase es gratis</h2>
+<p>Escríbenos ahora mismo y vive la experiencia Rolos Band.</p>
+<a href="https://wa.me/573133231571">Hablar por WhatsApp</a>
 </div>
 
 <!-- CLASES -->
-<section class="clases">
-  <h2>🎶 Explora tus Clases</h2>
-  <div class="clases-grid">
+<section class="clases" id="clases">
+<h2>Explora tus Clases</h2>
 
-    <div class="clase">
-      <img src="https://i.imgur.com/NHXm3y9.png">
-      <h3>Conga</h3>
-      <p>El corazón rítmico de la salsa.</p>
-    </div>
+<div class="clases-grid">
 
-    <div class="clase">
-      <img src="https://i.imgur.com/Vi7jQ43.png">
-      <h3>Timbal</h3>
-      <p>La energía y los cortes.</p>
-    </div>
+<a class="clase" href="https://www.tiktok.com/@maoescobarysurolosband/video/7515589742797393158" target="_blank">
+<img src="https://i.imgur.com/NHXm3y9.png"><h3>Conga</h3>
+</a>
 
-    <div class="clase">
-      <img src="https://i.imgur.com/DnGDjho.png">
-      <h3>Bongo</h3>
-      <p>El pulso y la improvisación.</p>
-    </div>
+<a class="clase" href="https://www.tiktok.com/@maoescobarysurolosband/video/7192222000545271045" target="_blank">
+<img src="https://i.imgur.com/Vi7jQ43.png"><h3>Timbal</h3>
+</a>
 
-    <div class="clase">
-      <img src="https://i.imgur.com/iN3R95d.png">
-      <h3>Piano</h3>
-      <p>Montunos y armonía salsera.</p>
-    </div>
+<a class="clase" href="https://www.tiktok.com/@maoescobarysurolosband/video/7201627786195389701" target="_blank">
+<img src="https://i.imgur.com/DnGDjho.png"><h3>Bongo</h3>
+</a>
 
-    <div class="clase">
-      <img src="https://i.imgur.com/eFPNV4E.png">
-      <h3>Canto</h3>
-      <p>Tu voz como instrumento.</p>
-    </div>
+<a class="clase" href="https://www.youtube.com/watch?v=7ybvRwyTvYY" target="_blank">
+<img src="https://i.imgur.com/iN3R95d.png"><h3>Piano</h3>
+</a>
 
-  </div>
+<a class="clase" href="https://www.youtube.com/watch?v=CR8ZbY6FQVM" target="_blank">
+<img src="https://i.imgur.com/eFPNV4E.png"><h3>Canto</h3>
+</a>
+
+</div>
 </section>
 
 <footer>
-  © 2026 Rolos Band – La Escuela de la Salsa
+© 2026 Rolos Band – La Escuela de la Salsa
 </footer>
 
 </body>
